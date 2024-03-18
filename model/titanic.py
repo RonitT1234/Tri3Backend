@@ -7,6 +7,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import StandardScaler
 import pdb
 import pickle
+from sklearn.metrics import accuracy_score
 
 class Titanic():
     #Loading, pre-proccessing, and splitting of data
@@ -26,10 +27,10 @@ class Titanic():
 
        
     #userInput=[pclass, sex, age, sibsp,fare]
-    def predict(userInput):
+    def predict(userInput, y_test):
         save_path = "logistic_regression_model.pkl"
         with open(save_path, 'rb') as model_file:
             loaded_model = pickle.load(model_file)
-        y_pred = loaded_model.predict([userInput])
-        return y_pred, 
+        _, alive_proba = loaded_model.predict_proba(userInput)
+        return alive_proba
     
