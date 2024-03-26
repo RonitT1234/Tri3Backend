@@ -14,6 +14,10 @@ stroke_api = Blueprint('stroke_api', __name__,
 api = Api(stroke_api)
 class StrokeAPI:        
     class Predict(Resource): 
+        def get(self):
+            Stroke.initialize()
+            return { 'message': "training complete" }
+
         def post(self):
             body = request.get_json()
             print(body)

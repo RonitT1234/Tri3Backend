@@ -14,6 +14,9 @@ titanic_api = Blueprint('titanic_api', __name__,
 api = Api(titanic_api)
 class TitanicAPI:        
     class Predict(Resource): 
+        def get(self):
+            Titanic.initialize()
+            return { 'message': "training complete" }
         def post(self):
             body = request.get_json()
             print(body)
